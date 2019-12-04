@@ -1,0 +1,107 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>hypo71</groupId>
+	<artifactId>hypo71</artifactId>
+	<version>0.0.1</version>
+	<packaging>jar</packaging>
+
+	<name>hypo71</name>
+	<url>http://maven.apache.org</url>
+
+	<licenses>
+		<license>
+			<name>CC0 1.0 Universal</name>
+			<url>http://creativecommons.org/publicdomain/zero/1.0/</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
+	<issueManagement>
+		<url>https://code.usgs.gov/vsc/hypo71</url>
+		<system>GitLab</system>
+	</issueManagement>
+
+	<developers>
+		<developer>
+			<name>Oleg Shepelev</name>
+			<properties>
+				<active>false</active>
+			</properties>
+		</developer>
+		<developer>
+			<name>Chirag Patel</name>
+			<properties>
+				<active>false</active>
+			</properties>
+		</developer>
+		<developer>
+			<id>dnorgaard</id>
+			<name>Diana Norgaard</name>
+			<email>dnorgaard@usgs.gov</email>
+			<organization>U.S. Geological Survey, Volcano Science Center</organization>
+			<properties>
+				<active>true</active>
+			</properties>
+		</developer>
+		<developer>
+			<id>tparker</id>
+			<name>Tom Parker</name>
+			<email>tparker@usgs.gov</email>
+			<organization>U.S. Geological Survey, Volcano Science Center</organization>
+			<properties>
+				<active>true</active>
+			</properties>
+		</developer>
+	</developers>
+	
+	<scm>
+		<connection>scm:git:git@code.usgs.gov:vsc/hypo71.git</connection>
+		<developerConnection>scm:git:git@code.usgs.gov:vsc/hypo71.git</developerConnection>
+		<url>git@code.usgs.gov:vsc/hypo71.git</url>
+	</scm>
+
+	<distributionManagement>
+		<repository>
+			<id>hypo71.web</id>
+			<name>Hypo71 website</name>
+			<url>scpexe://vulcan4.wr.usgs.gov/webdata/volcanoes.usgs.gov/htdocs/software/maven2</url>
+			<uniqueVersion>false</uniqueVersion>
+		</repository>
+		<site>
+			<id>gitlab.pages</id>
+			<url>scm:git:https://code.usgs.gov/vsc/hypo71.git</url>
+		</site>
+	</distributionManagement>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>${maven.compiler.source}</maven.compiler.target>
+		<junit.jupiter.version>5.5.2</junit.jupiter.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter</artifactId>
+			<version>${junit.jupiter.version}</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.1</version>
+			</plugin>
+			<plugin>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.22.2</version>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
