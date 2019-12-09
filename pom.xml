@@ -55,7 +55,7 @@
 			</properties>
 		</developer>
 	</developers>
-	
+
 	<scm>
 		<connection>scm:git:git@code.usgs.gov:vsc/hypo71.git</connection>
 		<developerConnection>scm:git:git@code.usgs.gov:vsc/hypo71.git</developerConnection>
@@ -66,7 +66,7 @@
 		<repository>
 			<id>hypo71.web</id>
 			<name>Hypo71 website</name>
-			<url>scpexe://vulcan4.wr.usgs.gov/webdata/volcanoes.usgs.gov/htdocs/software/maven2</url>
+			<url>scpexe://vsc@vulcan4.wr.usgs.gov/webdata/volcanoes.usgs.gov/htdocs/software/maven2</url>
 			<uniqueVersion>false</uniqueVersion>
 		</repository>
 		<site>
@@ -80,6 +80,7 @@
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>${maven.compiler.source}</maven.compiler.target>
 		<junit.jupiter.version>5.5.2</junit.jupiter.version>
+		<junit-platform.version>5.3.1</junit-platform.version>
 	</properties>
 
 	<dependencies>
@@ -89,19 +90,41 @@
 			<version>${junit.jupiter.version}</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-engine</artifactId>
+			<version>${junit-platform.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.maven.wagon</groupId>
+			<artifactId>wagon-ssh-external</artifactId>
+			<version>3.3.4</version>
+		</dependency>
 	</dependencies>
 
 	<build>
 		<plugins>
 			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.8.1</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>			
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>3.2.0</version>
 			</plugin>
 			<plugin>
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>2.22.2</version>
 			</plugin>
 		</plugins>
+
 	</build>
 
 </project>
