@@ -2,7 +2,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>hypo71</groupId>
+	<groupId>gov.usgs.volcanoes</groupId>
 	<artifactId>hypo71</artifactId>
 	<version>0.0.1</version>
 	<packaging>jar</packaging>
@@ -64,9 +64,9 @@
 
 	<distributionManagement>
 		<repository>
-			<id>hypo71.web</id>
+			<id>volcanoes.web</id>
 			<name>Hypo71 website</name>
-			<url>scpexe://vsc@vulcan4.wr.usgs.gov/webdata/volcanoes.usgs.gov/htdocs/software/maven2</url>
+			<url>scpexe://vulcan4.wr.usgs.gov/webdata/volcanoes.usgs.gov/htdocs/software/maven2</url>
 			<uniqueVersion>false</uniqueVersion>
 		</repository>
 		<site>
@@ -96,11 +96,6 @@
 			<version>${junit-platform.version}</version>
 			<scope>test</scope>
 		</dependency>
-		<dependency>
-			<groupId>org.apache.maven.wagon</groupId>
-			<artifactId>wagon-ssh-external</artifactId>
-			<version>3.3.4</version>
-		</dependency>
 	</dependencies>
 
 	<build>
@@ -123,8 +118,36 @@
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>2.22.2</version>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-site-plugin</artifactId>
+				<version>3.8.2</version>
+				<dependencies>
+					<dependency>
+						<groupId>org.apache.maven.scm</groupId>
+						<artifactId>maven-scm-manager-plexus</artifactId>
+						<version>1.11.2</version>
+					</dependency>
+					<dependency>
+						<groupId>org.apache.maven.scm</groupId>
+						<artifactId>maven-scm-provider-gitexe</artifactId>
+						<version>1.11.2</version>
+					</dependency>
+					<dependency>
+						<groupId>org.apache.maven.scm</groupId>
+						<artifactId>maven-scm-api</artifactId>
+						<version>1.11.2</version>
+					</dependency>
+				</dependencies>
+			</plugin>
 		</plugins>
-
+		<extensions>
+			<extension>
+				<groupId>org.apache.maven.wagon</groupId>
+				<artifactId>wagon-ssh-external</artifactId>
+				<version>1.0-beta-6</version>
+			</extension>
+		</extensions>
 	</build>
 
 </project>
