@@ -344,8 +344,7 @@ public class Hypo71 {
   }
 
   /*
-   * SUBROUTINE OUTPUT(TEST,KNO,IW,INS,IEW,DLY,FMGC,XMGC, &
-   * KLAS,PRR,CALR,ICAL,FLT,QSPA,MSTA, &
+   * SUBROUTINE OUTPUT(TEST,KNO,IW,INS,IEW,DLY,FMGC,XMGC, & KLAS,PRR,CALR,ICAL,FLT,QSPA,MSTA, &
    * PRMK,JMIN,P,S,SRMK,AMX,PRX,CALX,RMK,DT,FMP,AZRES,QRMK,KDX,LDX, &
    * WT,TP,T,WRK,KSMP,TS,TIME1,TIME2,DELTA,DX,DY,AVXM, &
    * XMAG,AVFM,FMAG,MAG,FNO,X,B,Y,SE,AF,AZ,AIN,ANIN,TEMP,KEY)
@@ -403,14 +402,13 @@ public class Hypo71 {
 
     // DATA CLASS/'A','B','C','D'/
     // DATA SYMBOL/' ','1','2','Q','*'/
-    CLASS = new char[] {'A', 'B', 'C', 'D'};
-    SYMBOL = new char[] {' ', '1', '2', 'Q', '*'};
+    CLASS = new char[] { 'A', 'B', 'C', 'D' };
+    SYMBOL = new char[] { ' ', '1', '2', 'Q', '*' };
 
     if (C1.IPRN >= 2 || O1.KP == 1) {
       /*
        * CALL XFMAGS & (TEST,FMGC,XMGC,KLAS,PRR,CALR,ICAL,IMAG,IR,QSPA, &
-       * AMX,PRX,CALX,FMP,KDX,DELTA,ZSQ,NRP,CAL,NM,AVXM,SDXM,XMAG,NF, &
-       * AVFM,SDFM,FMAG,MAG)
+       * AMX,PRX,CALX,FMP,KDX,DELTA,ZSQ,NRP,CAL,NM,AVXM,SDXM,XMAG,NF, & AVFM,SDFM,FMAG,MAG)
        */
       XFMAGS(FMGC, XMGC, KLAS, PRR, CALR, ICAL, QSPA, AMX, PRX, CALX, FMP, KDX, DELTA, CAL);
     }
@@ -461,9 +459,8 @@ public class Hypo71 {
       }
 
       /*
-       * USE THE FOLLOWING LINE FOR IBM MAINFRAME ONLY
-       * AIN(I)=ARSIN(ANIN(I))*57.29578 USE THE FOLLOWING LINE FOR IBM PC
-       * ONLY
+       * USE THE FOLLOWING LINE FOR IBM MAINFRAME ONLY AIN(I)=ARSIN(ANIN(I))*57.29578 USE THE
+       * FOLLOWING LINE FOR IBM PC ONLY
        */
       AIN[I] = ((double) Math.asin(ANIN[I]) * 57.29578f);
       if (AIN[I] < 0) {
@@ -645,9 +642,8 @@ public class Hypo71 {
         ERHOUT = getFormattedString(data(ERH), "(F5.1)");
       }
 
-      writeln("FPRINT_WRITER",
-          data("  DATE    ORIGIN    LAT ", INS[0], "    LONG ", IEW[0],
-              "    DEPTH    MAG NO DM GAP M  RMS  ERH  ERZ Q SQD  ADJ IN NR  AVR  AAR NM AVXM SDXM NF AVFM SDFM I"),
+      writeln("FPRINT_WRITER", data("  DATE    ORIGIN    LAT ", INS[0], "    LONG ", IEW[0],
+          "    DEPTH    MAG NO DM GAP M  RMS  ERH  ERZ Q SQD  ADJ IN NR  AVR  AAR NM AVXM SDXM NF AVFM SDFM I"),
           "(//,A,A1,A,A1,A)");
 
       // Integration code goes here
@@ -671,7 +667,7 @@ public class Hypo71 {
         // Integration code goes here
         results.addHypocenterOutput(new Hypocenter(C4.KDATE, C4.KHR, (int) KMIN, SEC, (int) LAT1,
             LAT2, (int) LON1, LON2, O2.Z, RMK2, MAGOUT, (int) NO, (int) IGAP, O2.DMIN, RMS, ERHOUT,
-            SE3OUT, new String(new char[] {QRMK[0], Q, SYM3})));
+            SE3OUT, new String(new char[] { QRMK[0], Q, SYM3 })));
 
         writeln("FPUNCH_WRITER",
             data(C4.KDATE, C4.KHR, KMIN, SEC, (int) LAT1, "-", LAT2, (int) LON1, "-", LON2, O2.Z,
@@ -1273,11 +1269,10 @@ public class Hypo71 {
   }
 
   /*
-   * SUBROUTINE MISING(NSTA,LAT,LON,NS,MAG,TEMP,DMIN,JDX,
-   * JMAX,O2.LATEP,LONEP,INS,IEW)
+   * SUBROUTINE MISING(NSTA,LAT,LON,NS,MAG,TEMP,DMIN,JDX, JMAX,O2.LATEP,LONEP,INS,IEW)
    * 
-   * Checks if any station in the station list which should record the earthquake is
-   * missing from the input data.
+   * Checks if any station in the station list which should record the earthquake is missing from
+   * the input data.
    */
   public void MISING(final double MAG, final double[] TEMP) throws IOException, ParseException {
 
@@ -1351,9 +1346,9 @@ public class Hypo71 {
    * CALR,ICAL,NDATE,NHRMN,LAT,LON,MDATE,MHRMN,KLSS,CALS,NS,QNO,IPUN, &
    * MNO,NRES,NXM,NFM,SR,SRSQ,SRWT,SXM,SXMSQ,SFM,SFMSQ)
    * 
-   * This subroutine prints a table of the number and percentage of earthquakes
-   * in each quality class, Q. It also prints a summary of travel time,
-   * X-magnitude, and F-magnitude residuals by station.
+   * This subroutine prints a table of the number and percentage of earthquakes in each quality
+   * class, Q. It also prints a summary of travel time, X-magnitude, and F-magnitude residuals by
+   * station.
    */
   public void SUMOUT() throws IOException, ParseException {
 
@@ -1778,12 +1773,8 @@ public class Hypo71 {
    * DT,FMP,AZRES,SYM,QRMK,KDX,LDX,JDX,TP,WRK,KSMP,TS,TIME1,TIME2, &
    * AVXM,AVFM,XMAG,FMAG,NRES,SR,SRSQ,SRWT,QNO,MNO)
    * 
-   * Processes one earthquake at a time, and involves following steps:
-   * <ol>
-   * <li> Set up a trial hypocenter
-   * <li> Geiger's adjustments
-   * <li> Compute error estimates
-   * </ol>
+   * Processes one earthquake at a time, and involves following steps: <ol> <li> Set up a trial
+   * hypocenter <li> Geiger's adjustments <li> Compute error estimates </ol>
    */
   public void SINGLE(boolean singmd) throws IOException, ParseException {
 
@@ -1861,17 +1852,17 @@ public class Hypo71 {
     // 2 0.73,0.69,0.64,0.59,0.53,0.47,0.41,0.34,0.28,0.23,
     // 3 0.18,0.14,0.11,0.08,0.06,0.04,0.03,0.02,0.01,0.01,0./
 
-    WF = new double[] {.95f, 0.95f, 0.95f, 0.95f, 0.95f, 0.95f, 0.94f, 0.94f, 0.94f, 0.93f, 0.92f,
+    WF = new double[] { .95f, 0.95f, 0.95f, 0.95f, 0.95f, 0.95f, 0.94f, 0.94f, 0.94f, 0.93f, 0.92f,
         0.92f, 0.91f, 0.90f, 0.88f, 0.87f, 0.85f, 0.83f, 0.80f, 0.77f, 0.73f, 0.69f, 0.64f, 0.59f,
         0.53f, 0.47f, 0.41f, 0.34f, 0.28f, 0.23f, 0.18f, 0.14f, 0.11f, 0.08f, 0.06f, 0.04f, 0.03f,
-        0.02f, 0.01f, 0.01f, 0f};
+        0.02f, 0.01f, 0.01f, 0f };
 
     // DATA LA/1,1,1,1,0,0,-1,-1,-1,-1/,
     // 1 LO/+1,-1,+1,-1,0,0,+1,-1,+1,-1/,
     // 2 ALZ/-1.0,-1.0,+1.0,+1.0,-1.732,+1.732,-1.0,-1.0,+1.0,+1.0/
-    LA = new int[] {1, 1, 1, 1, 0, 0, -1, -1, -1, -1};
-    LO = new int[] {+1, -1, +1, -1, 0, 0, +1, -1, +1, -1};
-    ALZ = new double[] {-1.0f, -1.0f, +1.0f, +1.0f, -1.732f, +1.732f, -1.0f, -1.0f, +1.0f, +1.0f};
+    LA = new int[] { 1, 1, 1, 1, 0, 0, -1, -1, -1, -1 };
+    LO = new int[] { +1, -1, +1, -1, 0, 0, +1, -1, +1, -1 };
+    ALZ = new double[] { -1.0f, -1.0f, +1.0f, +1.0f, -1.732f, +1.732f, -1.0f, -1.0f, +1.0f, +1.0f };
 
     O2.AVRPS = 0.0f;
     C4.IEXIT = 0;
@@ -1939,16 +1930,12 @@ public class Hypo71 {
               O2.Z = toDouble((ar.get(6) != null ? ar.get(6) : 0d));
             }
             /*
-             * final ArrayList<Object> ar = read(FINPUT_READER,
-             * "(F5.0,F5.2,I5,F5.2,I5,2F5.2)"); ORG1 = ((Double)
-             * (ar.get(0) == null ? 0d : ar.get(0))); ORG2 =
-             * ((Double) (ar.get(1) == null ? 0d : ar.get(1))); LAT1
-             * = (Integer) (ar.get(2) != null ? ar.get(2) : 0); LAT2
-             * = ((Double) (ar.get(3) != null ? ar.get(3) : 0d));
-             * LON1 = (Integer) (ar.get(4) != null ? ar.get(4) : 0);
-             * LON2 = ((Double) (ar.get(5) != null ? ar.get(5) :
-             * 0d)); O2.Z = ((Double) (ar.get(6) != null ? ar.get(6)
-             * : 0d));
+             * final ArrayList<Object> ar = read(FINPUT_READER, "(F5.0,F5.2,I5,F5.2,I5,2F5.2)");
+             * ORG1 = ((Double) (ar.get(0) == null ? 0d : ar.get(0))); ORG2 = ((Double) (ar.get(1)
+             * == null ? 0d : ar.get(1))); LAT1 = (Integer) (ar.get(2) != null ? ar.get(2) : 0);
+             * LAT2 = ((Double) (ar.get(3) != null ? ar.get(3) : 0d)); LON1 = (Integer) (ar.get(4)
+             * != null ? ar.get(4) : 0); LON2 = ((Double) (ar.get(5) != null ? ar.get(5) : 0d));
+             * O2.Z = ((Double) (ar.get(6) != null ? ar.get(6) : 0d));
              */
             // TODO: The list of values need to be defined here
             // (org1,
@@ -2719,17 +2706,14 @@ public class Hypo71 {
     AZRES[NRP1 - 1] = ((String) (ar.get(8) == null ? "" : ar.get(8)));
 
     /*
-     * final ArrayList<Object> ar = read(FINPUT_READER,
-     * "(2A4,9X,2I1,F5.2,1X,2(I4,F6.2),T21,A)"); CHECK = ((String)
-     * (ar.get(0) == null ? "" : ar.get(0))); IPRO = ((String) (ar.get(1) ==
-     * null ? "" : ar.get(1))); O1.KNST = ((Integer) (ar.get(2) == null ? 0d
-     * : ar.get(2))); O1.INST = ((Integer) (ar.get(3) == null ? 0d :
-     * ar.get(3))); ZRES = ((Double) (ar.get(3) != null ? ar.get(3) : 0d));
-     * LAT1 = (Integer) (ar.get(4) != null ? ar.get(4) : 0); LAT2 =
-     * ((Double) (ar.get(5) != null ? ar.get(5) : 0d)); LON1 = (Integer)
-     * (ar.get(6) != null ? ar.get(6) : 0); LON2 = ((Double) (ar.get(7) !=
-     * null ? ar.get(7) : 0d)); AZRES[NRP1 - 1] = ((String) (ar.get(8) ==
-     * null ? "" : ar.get(8)));
+     * final ArrayList<Object> ar = read(FINPUT_READER, "(2A4,9X,2I1,F5.2,1X,2(I4,F6.2),T21,A)");
+     * CHECK = ((String) (ar.get(0) == null ? "" : ar.get(0))); IPRO = ((String) (ar.get(1) == null
+     * ? "" : ar.get(1))); O1.KNST = ((Integer) (ar.get(2) == null ? 0d : ar.get(2))); O1.INST =
+     * ((Integer) (ar.get(3) == null ? 0d : ar.get(3))); ZRES = ((Double) (ar.get(3) != null ?
+     * ar.get(3) : 0d)); LAT1 = (Integer) (ar.get(4) != null ? ar.get(4) : 0); LAT2 = ((Double)
+     * (ar.get(5) != null ? ar.get(5) : 0d)); LON1 = (Integer) (ar.get(6) != null ? ar.get(6) : 0);
+     * LON2 = ((Double) (ar.get(7) != null ? ar.get(7) : 0d)); AZRES[NRP1 - 1] = ((String)
+     * (ar.get(8) == null ? "" : ar.get(8)));
      */
     // TODO: another set of values needs to be defined here
     // READ(4,600)
@@ -2754,12 +2738,10 @@ public class Hypo71 {
   }
 
   /*
-   * SUBROUTINE SWMREG(TEST,IPRN,NR,KSMP,FNO,X,W,ISKP,KF,KZ,XMEAN, &
-   * B,Y,BSE,AF,ONF,FLIM)
+   * SUBROUTINE SWMREG(TEST,IPRN,NR,KSMP,FNO,X,W,ISKP,KF,KZ,XMEAN, & B,Y,BSE,AF,ONF,FLIM)
    * 
-   * This subroutine computes the Geiger adjustment vector (and its
-   * standard errors) by a step-wise multiple regression of travel time
-   * residuals.
+   * This subroutine computes the Geiger adjustment vector (and its standard errors) by a step-wise
+   * multiple regression of travel time residuals.
    */
 
   public void SWMREG(final double FNO, final double[][] X, final double[] W, final int[] ISKP,
@@ -3067,11 +3049,9 @@ public class Hypo71 {
 
   /*
    * SUBROUTINE XFMAGS(TEST,FMGC,XMGC,KLAS,PRR,CALR,ICAL,IMAG,IR,QSPA, &
-   * AMX,PRX,CALX,FMP,KDX,DELTA,ZSQ,NRP,CAL,NM,AVXM,SDXM,XMAG,NF, &
-   * AVFM,SDFM,FMAG,MAG)
+   * AMX,PRX,CALX,FMP,KDX,DELTA,ZSQ,NRP,CAL,NM,AVXM,SDXM,XMAG,NF, & AVFM,SDFM,FMAG,MAG)
    * 
-   * Computes maximum amplitude magnitude (XMAG) and F-P magnitude (FMAG)
-   * for each station.
+   * Computes maximum amplitude magnitude (XMAG) and F-P magnitude (FMAG) for each station.
    */
   @SuppressWarnings("boxing")
   public void XFMAGS(final double[] FMGC, final double[] XMGC, final int[] KLAS, final double[] PRR,
@@ -3098,56 +3078,56 @@ public class Hypo71 {
     // 3 0.30, 1.29, 0.12, 0.14, 0.90, 0.76, 0.35, 0.84,
     // 4 0.43, 1.40, 0.25, 0.27, 1.00, 0.86, 0.43, 0.95,
     // 5 0.55, 1.49, 0.38, 0.41, 1.08, 0.93, 0.49, 1.04/
-    TEMP1[0] = new double[] {-0.02f, 0.14f, 0.30f, 0.43f, 0.55f};
-    TEMP1[1] = new double[] {1.05f, 1.18f, 1.29f, 1.40f, 1.49f};
-    TEMP1[2] = new double[] {-0.15f, -0.01f, 0.12f, 0.25f, 0.38f};
-    TEMP1[3] = new double[] {-0.13f, 0.01f, 0.14f, 0.27f, 0.41f};
-    TEMP1[4] = new double[] {0.66f, 0.79f, 0.90f, 1.00f, 1.08f};
-    TEMP1[5] = new double[] {0.55f, 0.66f, 0.76f, 0.86f, 0.93f};
-    TEMP1[6] = new double[] {0.17f, 0.27f, 0.35f, 0.43f, 0.49f};
-    TEMP1[7] = new double[] {0.42f, 1.64f, 0.84f, 0.95f, 1.04f};
+    TEMP1[0] = new double[] { -0.02f, 0.14f, 0.30f, 0.43f, 0.55f };
+    TEMP1[1] = new double[] { 1.05f, 1.18f, 1.29f, 1.40f, 1.49f };
+    TEMP1[2] = new double[] { -0.15f, -0.01f, 0.12f, 0.25f, 0.38f };
+    TEMP1[3] = new double[] { -0.13f, 0.01f, 0.14f, 0.27f, 0.41f };
+    TEMP1[4] = new double[] { 0.66f, 0.79f, 0.90f, 1.00f, 1.08f };
+    TEMP1[5] = new double[] { 0.55f, 0.66f, 0.76f, 0.86f, 0.93f };
+    TEMP1[6] = new double[] { 0.17f, 0.27f, 0.35f, 0.43f, 0.49f };
+    TEMP1[7] = new double[] { 0.42f, 1.64f, 0.84f, 0.95f, 1.04f };
 
     // DATA TEMP2/0.65, 1.57, 0.53, 0.57, 1.16, 1.00, 0.55, 1.13,
     // 7 0.74, 1.63, 0.71, 0.75, 1.23, 1.07, 0.63, 1.24,
     // 8 0.83, 1.70, 0.90, 0.95, 1.30, 1.15, 0.72, 1.40,
     // 9 0.92, 1.77, 1.07, 1.14, 1.38, 1.25, 0.83, 1.50,
     // A 1.01, 1.86, 1.23, 1.28, 1.47, 1.35, 0.95, 1.62/
-    TEMP2[0] = new double[] {0.65f, 0.74f, 0.83f, 0.92f, 1.01f};
-    TEMP2[1] = new double[] {1.57f, 1.63f, 1.70f, 1.77f, 1.86f};
-    TEMP2[2] = new double[] {0.53f, 0.71f, 0.90f, 1.07f, 1.23f};
-    TEMP2[3] = new double[] {0.57f, 0.75f, 0.95f, 1.14f, 1.28f};
-    TEMP2[4] = new double[] {1.16f, 1.23f, 1.30f, 1.38f, 1.47f};
-    TEMP2[5] = new double[] {1.00f, 1.07f, 1.15f, 1.25f, 1.35f};
-    TEMP2[6] = new double[] {0.55f, 0.63f, 0.72f, 0.83f, 0.95f};
-    TEMP2[7] = new double[] {1.13f, 1.24f, 1.40f, 1.50f, 1.62f};
+    TEMP2[0] = new double[] { 0.65f, 0.74f, 0.83f, 0.92f, 1.01f };
+    TEMP2[1] = new double[] { 1.57f, 1.63f, 1.70f, 1.77f, 1.86f };
+    TEMP2[2] = new double[] { 0.53f, 0.71f, 0.90f, 1.07f, 1.23f };
+    TEMP2[3] = new double[] { 0.57f, 0.75f, 0.95f, 1.14f, 1.28f };
+    TEMP2[4] = new double[] { 1.16f, 1.23f, 1.30f, 1.38f, 1.47f };
+    TEMP2[5] = new double[] { 1.00f, 1.07f, 1.15f, 1.25f, 1.35f };
+    TEMP2[6] = new double[] { 0.55f, 0.63f, 0.72f, 0.83f, 0.95f };
+    TEMP2[7] = new double[] { 1.13f, 1.24f, 1.40f, 1.50f, 1.62f };
 
     // DATA TEMP3/1.11, 1.96, 1.35, 1.40, 1.57, 1.46, 1.08, 1.73,
     // C 1.20, 2.05, 1.45, 1.49, 1.67, 1.56, 1.19, 1.84,
     // D 1.30, 2.14, 1.55, 1.58, 1.77, 1.66, 1.30, 1.94,
     // E 1.39, 2.24, 1.65, 1.67, 1.86, 1.76, 1.40, 2.04,
     // F 1.47, 2.33, 1.74, 1.76, 1.95, 1.85, 1.50, 2.14/
-    TEMP3[0] = new double[] {1.11f, 1.20f, 1.30f, 1.39f, 1.47f};
-    TEMP3[1] = new double[] {1.96f, 2.05f, 2.14f, 2.24f, 2.33f};
-    TEMP3[2] = new double[] {1.35f, 1.45f, 1.55f, 1.65f, 1.74f};
-    TEMP3[3] = new double[] {1.40f, 1.49f, 1.58f, 1.67f, 1.76f};
-    TEMP3[4] = new double[] {1.57f, 1.67f, 1.77f, 1.86f, 1.95f};
-    TEMP3[5] = new double[] {1.46f, 1.56f, 1.66f, 1.76f, 1.85f};
-    TEMP3[6] = new double[] {1.08f, 1.19f, 1.30f, 1.40f, 1.50f};
-    TEMP3[7] = new double[] {1.73f, 1.84f, 1.94f, 2.04f, 2.14f};
+    TEMP3[0] = new double[] { 1.11f, 1.20f, 1.30f, 1.39f, 1.47f };
+    TEMP3[1] = new double[] { 1.96f, 2.05f, 2.14f, 2.24f, 2.33f };
+    TEMP3[2] = new double[] { 1.35f, 1.45f, 1.55f, 1.65f, 1.74f };
+    TEMP3[3] = new double[] { 1.40f, 1.49f, 1.58f, 1.67f, 1.76f };
+    TEMP3[4] = new double[] { 1.57f, 1.67f, 1.77f, 1.86f, 1.95f };
+    TEMP3[5] = new double[] { 1.46f, 1.56f, 1.66f, 1.76f, 1.85f };
+    TEMP3[6] = new double[] { 1.08f, 1.19f, 1.30f, 1.40f, 1.50f };
+    TEMP3[7] = new double[] { 1.73f, 1.84f, 1.94f, 2.04f, 2.14f };
 
     // DATA TEMP4/1.53, 2.41, 1.81, 1.83, 2.03, 1.93, 1.58, 2.24,
     // H 1.56, 2.45, 1.85, 1.87, 2.07, 1.97, 1.62, 2.31,
     // I 1.53, 2.44, 1.84, 1.86, 2.06, 1.96, 1.61, 2.31,
     // J 1.43, 2.36, 1.76, 1.78, 1.98, 1.88, 1.53, 1.92,
     // K 1.25, 2.18, 1.59, 1.61, 1.82, 1.72, 1.37, 1.49/
-    TEMP4[0] = new double[] {1.53f, 1.56f, 1.53f, 1.43f, 1.25f};
-    TEMP4[1] = new double[] {2.41f, 2.45f, 2.44f, 2.36f, 2.18f};
-    TEMP4[2] = new double[] {1.81f, 1.85f, 1.84f, 1.76f, 1.59f};
-    TEMP4[3] = new double[] {1.83f, 1.87f, 1.86f, 1.78f, 1.61f};
-    TEMP4[4] = new double[] {2.03f, 2.07f, 2.06f, 1.98f, 1.82f};
-    TEMP4[5] = new double[] {1.93f, 1.97f, 1.96f, 1.88f, 1.72f};
-    TEMP4[6] = new double[] {1.58f, 1.62f, 1.61f, 2.53f, 1.37f};
-    TEMP4[7] = new double[] {2.24f, 2.31f, 2.31f, 1.92f, 1.49f};
+    TEMP4[0] = new double[] { 1.53f, 1.56f, 1.53f, 1.43f, 1.25f };
+    TEMP4[1] = new double[] { 2.41f, 2.45f, 2.44f, 2.36f, 2.18f };
+    TEMP4[2] = new double[] { 1.81f, 1.85f, 1.84f, 1.76f, 1.59f };
+    TEMP4[3] = new double[] { 1.83f, 1.87f, 1.86f, 1.78f, 1.61f };
+    TEMP4[4] = new double[] { 2.03f, 2.07f, 2.06f, 1.98f, 1.82f };
+    TEMP4[5] = new double[] { 1.93f, 1.97f, 1.96f, 1.88f, 1.72f };
+    TEMP4[6] = new double[] { 1.58f, 1.62f, 1.61f, 2.53f, 1.37f };
+    TEMP4[7] = new double[] { 2.24f, 2.31f, 2.31f, 1.92f, 1.49f };
 
     for (int I = 0; I < 8; I++) {// DO 2 I=1,8
       for (int J = 0; J < 5; J++) {// DO 1 J=1,5
@@ -3291,7 +3271,8 @@ public class Hypo71 {
   }
 
   /**
-   * Read in phase list and instruction card. 
+   * Read in phase list and instruction card.
+   * 
    * @param phaseRecordsList
    * @throws IOException
    * @throws ParseException
@@ -3411,7 +3392,8 @@ public class Hypo71 {
               (String) (ar.get(18) != null ? ar.get(18) : "0"),
               (String) (ar.get(19) != null ? ar.get(19) : "0"),
               ((String) (ar.get(20) != null ? ar.get(20) : " ")).length() != 0
-                  ? ((String) (ar.get(20) != null ? ar.get(20) : " ")).charAt(0) : ' ',
+                  ? ((String) (ar.get(20) != null ? ar.get(20) : " ")).charAt(0)
+                  : ' ',
               (String) (ar.get(21) != null ? ar.get(21) : 0)));
         } catch (IOException e) {
         }
@@ -3450,30 +3432,23 @@ public class Hypo71 {
       /*
        * try { List ar = read( FINPUT_READER,
        * "(2A4,T8,F1.0,T10,I8,I2,F5.2,T32,F5.2,A4,T40,F1.0,T44,F4.0,F3.2,F4.1,T59,F4.1,A3,F5.2,F5.0,T21,A4,T7,A1,T32,A4,T1,A80,T63,A1,T5,A4)"
-       * ); if (ar.size() == 0) { goto350 = true; break; } MSTA[l] =
-       * (String) (ar.get(0) != null ? ar.get(0) : ""); PRMK[l] = (String)
-       * (ar.get(1) != null ? ar.get(1) : ""); W[l] = ((Double) (ar.get(2)
-       * != null ? ar.get(2) : 0d)); JTIME = (Integer) (ar.get(3) != null
-       * ? ar.get(3) : 0); JMIN[l] = (Integer) (ar.get(4) != null ?
-       * ar.get(4) : 0); P[l] = ((Double) (ar.get(5) != null ? ar.get(5) :
-       * 0d)); S[l] = ((Double) (ar.get(6) != null ? ar.get(6) : 0d));
-       * SRMK[l] = (String) (ar.get(7) != null ? ar.get(7) : 0); WS[l] =
-       * ((Double) (ar.get(8) != null ? ar.get(8) : 0d)); AMX[l] =
-       * ((Double) (ar.get(9) != null ? ar.get(9) : 0d)); PRX[l] =
-       * ((Double) (ar.get(10) != null ? ar.get(10) : 0d)); CALP =
-       * ((Double) (ar.get(11) != null ? ar.get(11) : 0d)); CALX[l] =
-       * ((Double) (ar.get(12) != null ? ar.get(12) : 0d)); RMK[l] =
-       * (String) (ar.get(13) != null ? ar.get(13) : 0); DT[l] = ((Double)
-       * (ar.get(14) != null ? ar.get(14) : 0d)); FMP[l] = ((Double)
-       * (ar.get(15) != null ? ar.get(15) : 0d)); AZRES[l] = (String)
-       * (ar.get(16) != null ? ar.get(16) : 0); String temp = ((String)
-       * (ar.get(17) != null ? ar.get(17) : " ")); SYM[l] = temp.length()
-       * != 0 ? temp.charAt(0) : ' '; AS = (String) (ar.get(18) != null ?
-       * ar.get(18) : 0); ICARD = (String) (ar.get(19) != null ?
-       * ar.get(19) : 0); temp = ((String) (ar.get(20) != null ?
-       * ar.get(20) : " ")); QRMK[l] = temp.length() != 0 ? temp.charAt(0)
-       * : ' '; IPRO = (String) (ar.get(21) != null ? ar.get(21) : 0); }
-       * catch (IOException e) { endOfFileReached = true; }
+       * ); if (ar.size() == 0) { goto350 = true; break; } MSTA[l] = (String) (ar.get(0) != null ?
+       * ar.get(0) : ""); PRMK[l] = (String) (ar.get(1) != null ? ar.get(1) : ""); W[l] = ((Double)
+       * (ar.get(2) != null ? ar.get(2) : 0d)); JTIME = (Integer) (ar.get(3) != null ? ar.get(3) :
+       * 0); JMIN[l] = (Integer) (ar.get(4) != null ? ar.get(4) : 0); P[l] = ((Double) (ar.get(5) !=
+       * null ? ar.get(5) : 0d)); S[l] = ((Double) (ar.get(6) != null ? ar.get(6) : 0d)); SRMK[l] =
+       * (String) (ar.get(7) != null ? ar.get(7) : 0); WS[l] = ((Double) (ar.get(8) != null ?
+       * ar.get(8) : 0d)); AMX[l] = ((Double) (ar.get(9) != null ? ar.get(9) : 0d)); PRX[l] =
+       * ((Double) (ar.get(10) != null ? ar.get(10) : 0d)); CALP = ((Double) (ar.get(11) != null ?
+       * ar.get(11) : 0d)); CALX[l] = ((Double) (ar.get(12) != null ? ar.get(12) : 0d)); RMK[l] =
+       * (String) (ar.get(13) != null ? ar.get(13) : 0); DT[l] = ((Double) (ar.get(14) != null ?
+       * ar.get(14) : 0d)); FMP[l] = ((Double) (ar.get(15) != null ? ar.get(15) : 0d)); AZRES[l] =
+       * (String) (ar.get(16) != null ? ar.get(16) : 0); String temp = ((String) (ar.get(17) != null
+       * ? ar.get(17) : " ")); SYM[l] = temp.length() != 0 ? temp.charAt(0) : ' '; AS = (String)
+       * (ar.get(18) != null ? ar.get(18) : 0); ICARD = (String) (ar.get(19) != null ? ar.get(19) :
+       * 0); temp = ((String) (ar.get(20) != null ? ar.get(20) : " ")); QRMK[l] = temp.length() != 0
+       * ? temp.charAt(0) : ' '; IPRO = (String) (ar.get(21) != null ? ar.get(21) : 0); } catch
+       * (IOException e) { endOfFileReached = true; }
        */
 
       if (MSTA[l].equals(" ***") || MSTA[l].equals(" $$$") || MSTA[l].equals(" ###")
@@ -3629,8 +3604,8 @@ public class Hypo71 {
   /*
    * SUBROUTINE ANSWER(A,S,XMEAN,SIGMA,IDX,PHI,L,M,MM,PF,NDX,ADX)
    * 
-   * Prints the itnermediate results of the regression analysis (SWMREG), and is
-   * used only for tracing the computation of a given earthquake.
+   * Prints the itnermediate results of the regression analysis (SWMREG), and is used only for
+   * tracing the computation of a given earthquake.
    * 
    */
   @SuppressWarnings("boxing")
@@ -3682,8 +3657,7 @@ public class Hypo71 {
   }
 
   /*
-   * private static abstract class Wrapper<T> { public abstract void
-   * setValue(T value);
+   * private static abstract class Wrapper<T> { public abstract void setValue(T value);
    * 
    * }
    */
@@ -3710,6 +3684,7 @@ public class Hypo71 {
 
   /**
    * Read in heading card, reset test-variable list, station list, crustal model, and control card.
+   * 
    * @param stationsList
    * @param crustalModelList
    * @param controlCard
@@ -3724,7 +3699,7 @@ public class Hypo71 {
     writeln("FPRINT_WRITER", data("1"), "(A)");// line 211
 
     double[] testDefault =
-        {0.10f, 10.0f, 2.0f, 0.05f, 5.0f, 4.0f, -0.87f, 2.00f, 0.0035f, 100.0f, 8.0f, 0.5f, 1.0f};
+        { 0.10f, 10.0f, 2.0f, 0.05f, 5.0f, 4.0f, -0.87f, 2.00f, 0.0035f, 100.0f, 8.0f, 0.5f, 1.0f };
     if (ATEST != null) {
       testDefault = ATEST;
     }
@@ -3781,10 +3756,9 @@ public class Hypo71 {
       }
 
       writeln("FPRINT_WRITER", data(AHEAD), "(40X,A48)");
-      writeln("FPRINT_WRITER",
-          data(" ***** PROGRAM: HYPO71PC (Version 1: 11/29/85) *****",
-              "TEST(1)  TEST(2)  TEST(3)  TEST(4)  TEST(5)  TEST(6)  TEST(7)  TEST(8)  TEST(9) TEST(10)"
-                  + " TEST(11) TEST(12) TEST(13)"),
+      writeln("FPRINT_WRITER", data(" ***** PROGRAM: HYPO71PC (Version 1: 11/29/85) *****",
+          "TEST(1)  TEST(2)  TEST(3)  TEST(4)  TEST(5)  TEST(6)  TEST(7)  TEST(8)  TEST(9) TEST(10)"
+              + " TEST(11) TEST(12) TEST(13)"),
           "(///,A," + "" + "///,13X,A)");
       writeln("FPRINT_WRITER", " STANDARD ");
       write("FPRINT_WRITER", convertArrayToListOfObjects(Arrays.copyOf(testDefault, 13)),
@@ -3807,9 +3781,8 @@ public class Hypo71 {
         writeln("FPRINT_WRITER", data("L      STN     LAT     LONG    ELV DELAY",
             "FMGC  XMGC KL  PRR  CALR IC      DATE HRMN"), "(/,4X,A,5X,A)");
       } else {
-        writeln("FPRINT_WRITER",
-            data(
-                "L    STN    LAT      LONG      ELV     M  DLY1  DLY2  XMGC FMGC KL CALR IC   DATE HRMN"),
+        writeln("FPRINT_WRITER", data(
+            "L    STN    LAT      LONG      ELV     M  DLY1  DLY2  XMGC FMGC KL CALR IC   DATE HRMN"),
             "(/,4X,A)");
       }
 
@@ -3960,10 +3933,9 @@ public class Hypo71 {
         D[i] = crustalModel.getD();
 
         /*
-         * List ar = read(FINPUT_READER, "(2F7.3)"); if (ar.size() == 0)
-         * { error = false; break; } V[i] = ((Double) (ar.get(0) != null
-         * ? ar.get(0) : 0d)); D[i] = ((Double) (ar.get(1) != null ?
-         * ar.get(1) : 0d));
+         * List ar = read(FINPUT_READER, "(2F7.3)"); if (ar.size() == 0) { error = false; break; }
+         * V[i] = ((Double) (ar.get(0) != null ? ar.get(0) : 0d)); D[i] = ((Double) (ar.get(1) !=
+         * null ? ar.get(1) : 0d));
          */
         if (V[i] < 0.01) {
           error = false;
@@ -4092,26 +4064,21 @@ public class Hypo71 {
     LON2 = controlCard.getLON2();
 
     /*
-     * List ar = read(FINPUT_READER,
-     * "(I1,F4.0,2F5.0,F5.2,7I5,5I1,2(I4,F6.2))"); KSING = (Integer)
-     * (ar.get(0) != null ? ar.get(0) : 0); C2.ZTR = ((Double) (ar.get(1) !=
-     * null ? ar.get(1) : 0d)); C2.XNEAR = ((Double) (ar.get(2) != null ?
-     * ar.get(2) : 0d)); C2.XFAR = ((Double) (ar.get(3) != null ? ar.get(3)
-     * : 0d)); C2.POS = ((Double) (ar.get(4) != null ? ar.get(4) : 0d));
-     * C1.IQ = (Integer) (ar.get(5) != null ? ar.get(5) : 0); C1.KMS =
-     * (Integer) (ar.get(6) != null ? ar.get(6) : 0); C1.KFM = (Integer)
-     * (ar.get(7) != null ? ar.get(7) : 0); C1.IPUN = (Integer) (ar.get(8)
-     * != null ? ar.get(8) : 0); C1.IMAG = (Integer) (ar.get(9) != null ?
-     * ar.get(9) : 0); C1.IR = (Integer) (ar.get(10) != null ? ar.get(10) :
-     * 0); C1.IPRN = (Integer) (ar.get(11) != null ? ar.get(11) : 0);
-     * C1.KPAPER = (Integer) (ar.get(12) != null ? ar.get(12) : 0); C1.KTEST
-     * = (Integer) (ar.get(13) != null ? ar.get(13) : 0); C1.KAZ = (Integer)
-     * (ar.get(14) != null ? ar.get(14) : 0); C1.KSORT = (Integer)
-     * (ar.get(15) != null ? ar.get(15) : 0); C1.KSEL = (Integer)
-     * (ar.get(16) != null ? ar.get(16) : 0); LAT1 = (Integer) (ar.get(17)
-     * != null ? ar.get(17) : 0); LAT2 = (Integer) (ar.get(18) != null ?
-     * ar.get(18) : 0); LON1 = ((Double) (ar.get(19) != null ? ar.get(19) :
-     * 0d)); LON2 = ((Double) (ar.get(20) != null ? ar.get(20) : 0d));
+     * List ar = read(FINPUT_READER, "(I1,F4.0,2F5.0,F5.2,7I5,5I1,2(I4,F6.2))"); KSING = (Integer)
+     * (ar.get(0) != null ? ar.get(0) : 0); C2.ZTR = ((Double) (ar.get(1) != null ? ar.get(1) :
+     * 0d)); C2.XNEAR = ((Double) (ar.get(2) != null ? ar.get(2) : 0d)); C2.XFAR = ((Double)
+     * (ar.get(3) != null ? ar.get(3) : 0d)); C2.POS = ((Double) (ar.get(4) != null ? ar.get(4) :
+     * 0d)); C1.IQ = (Integer) (ar.get(5) != null ? ar.get(5) : 0); C1.KMS = (Integer) (ar.get(6) !=
+     * null ? ar.get(6) : 0); C1.KFM = (Integer) (ar.get(7) != null ? ar.get(7) : 0); C1.IPUN =
+     * (Integer) (ar.get(8) != null ? ar.get(8) : 0); C1.IMAG = (Integer) (ar.get(9) != null ?
+     * ar.get(9) : 0); C1.IR = (Integer) (ar.get(10) != null ? ar.get(10) : 0); C1.IPRN = (Integer)
+     * (ar.get(11) != null ? ar.get(11) : 0); C1.KPAPER = (Integer) (ar.get(12) != null ? ar.get(12)
+     * : 0); C1.KTEST = (Integer) (ar.get(13) != null ? ar.get(13) : 0); C1.KAZ = (Integer)
+     * (ar.get(14) != null ? ar.get(14) : 0); C1.KSORT = (Integer) (ar.get(15) != null ? ar.get(15)
+     * : 0); C1.KSEL = (Integer) (ar.get(16) != null ? ar.get(16) : 0); LAT1 = (Integer) (ar.get(17)
+     * != null ? ar.get(17) : 0); LAT2 = (Integer) (ar.get(18) != null ? ar.get(18) : 0); LON1 =
+     * ((Double) (ar.get(19) != null ? ar.get(19) : 0d)); LON2 = ((Double) (ar.get(20) != null ?
+     * ar.get(20) : 0d));
      */
 
     writeln("FPRINT_WRITER",
@@ -4156,13 +4123,11 @@ public class Hypo71 {
       throws IOException, ParseException {
     if (filePrefix.equals("FPRINT_WRITER")) {
       results.setPrintOutput(results.getPrintOutput() + "\r\n"/*
-                                                               * + filePrefix
-                                                               * + ":"
+                                                               * + filePrefix + ":"
                                                                */ + data);
     } else {
       results.setPunchOutput(results.getPrintOutput() + "\r\n"/*
-                                                               * + filePrefix
-                                                               * + ":"
+                                                               * + filePrefix + ":"
                                                                */ + data);
     }
   }
@@ -4237,14 +4202,13 @@ public class Hypo71 {
   }
 
   /**
-   * Returns string value if it's length is not zero and default value
-   * otherwise.
+   * Returns string value if it's length is not zero and default value otherwise.
    * 
    * @return
    */
   /*
-   * private String getValueIfNotEmpty(String string, String defaultValue) {
-   * return string.trim().length() == 0 ? defaultValue : string; }
+   * private String getValueIfNotEmpty(String string, String defaultValue) { return
+   * string.trim().length() == 0 ? defaultValue : string; }
    */
 
   public Hypo71() {
@@ -4259,9 +4223,8 @@ public class Hypo71 {
    * Calculate hypo71.
    * 
    * @param BHEAD Calculation data name
-   * @param TEST Array of values for test array (length = 15). If ATEST[i] =
-   *            1.23456, then leaves TEST[i] default, if null then leaves all
-   *            TEST default
+   * @param TEST Array of values for test array (length = 15). If ATEST[i] = 1.23456, then leaves
+   *        TEST[i] default, if null then leaves all TEST default
    * @throws ParseException
    * @throws IOException
    */
@@ -4370,6 +4333,7 @@ public class Hypo71 {
 
   /**
    * Main method.
+   * 
    * @param args hypo71 input file name
    */
   public static void main(String[] args) {
@@ -4525,6 +4489,7 @@ public class Hypo71 {
 
   /**
    * Run Hypo71 given a hypo71 input file.
+   * 
    * @param finputName hypo71 input file
    * @return hypo71 output text
    */

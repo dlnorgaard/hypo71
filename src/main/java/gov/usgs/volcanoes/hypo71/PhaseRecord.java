@@ -15,7 +15,7 @@ public class PhaseRecord {
    */
   private String MSTA;
   /**
-   * P Remark. 
+   * P Remark.
    */
   private String PRMK;
   /**
@@ -46,23 +46,23 @@ public class PhaseRecord {
    * 
    */
   private float WS;
-  /** 
+  /**
    * Maximum peak-to-peak amplitude in mm.
    */
   private float AMX;
   /**
-   * Period of the maximum amplitude in sec. 
+   * Period of the maximum amplitude in sec.
    */
   private float PRX;
-  /** 
+  /**
    * Normally not used except as noted in next item.
    */
   private float CALP;
-  /** 
+  /**
    * Peak-to-peak amplitude of 10mv calibration signal in mm.
    */
   private float CALX;
-  /** 
+  /**
    * Remark for this phase card.
    */
   private String RMK;

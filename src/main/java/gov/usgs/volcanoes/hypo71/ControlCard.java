@@ -60,8 +60,8 @@ public class ControlCard {
 
   private int KPAPER;
   /**
-   * If ktest=1 then auxiliary RMS values are calculated at ten points on a
-   * sphere centered at hypocenter.
+   * If ktest=1 then auxiliary RMS values are calculated at ten points on a sphere centered at
+   * hypocenter.
    */
   private int KTEST;
   /**
@@ -73,8 +73,7 @@ public class ControlCard {
    */
   private int KSORT;
   /**
-   * If ksel=1 then the printed output for each earthquake will start at a new
-   * page.
+   * If ksel=1 then the printed output for each earthquake will start at a new page.
    */
   private int KSEL;
   /**

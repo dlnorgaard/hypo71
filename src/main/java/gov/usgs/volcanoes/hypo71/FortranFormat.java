@@ -82,10 +82,9 @@ public class FortranFormat {
         if (o != null) {
           use = o instanceof String ? (String) o : o.toString();
         }
-        return format(
-            o == null ? null
-                : u.getLength() > 0 && use.length() > u.getLength()
-                    ? use.substring(0, u.getLength()) : use,
+        return format(o == null ? null
+            : u.getLength() > 0 && use.length() > u.getLength() ? use.substring(0, u.getLength())
+                : use,
             use != null && u.getLength() == 0 ? use.length() : u.getLength(),
             !options.isLeftAlignCharacters());
       }
@@ -592,10 +591,8 @@ public class FortranFormat {
     /**
      * Instantiates a new edits the descriptor.
      * 
-     * @param tag
-     *            the edit descriptor tag
-     * @param nonRepeatable
-     *            whether the edit descriptor is non-repeatable or not
+     * @param tag the edit descriptor tag
+     * @param nonRepeatable whether the edit descriptor is non-repeatable or not
      */
     private EditDescriptor(final String tag, final boolean nonRepeatable) {
       this.tag = tag;
@@ -693,10 +690,8 @@ public class FortranFormat {
     /**
      * Instantiates a new specification string interpreter.
      * 
-     * @param s
-     *            the String to be pre-processed
-     * @throws ParseException
-     *             the parse exception
+     * @param s the String to be pre-processed
+     * @throws ParseException the parse exception
      */
     public SpecificationStringInterpreter(final String s) throws ParseException {
       if (s == null) {
@@ -727,8 +722,7 @@ public class FortranFormat {
     /**
      * Adds the commas to the correct places.
      * 
-     * @param input
-     *            the input
+     * @param input the input
      * @return the string
      */
     protected final String checkCommas(final String input) {
@@ -776,11 +770,9 @@ public class FortranFormat {
     /**
      * Multiplies out compound descriptors.
      * 
-     * @param input
-     *            the input
+     * @param input the input
      * @return the string
-     * @throws ParseException
-     *             the parse exception
+     * @throws ParseException the parse exception
      */
     protected final String multiplyOut(final String input) throws ParseException {
       final StringBuilder sb = new StringBuilder();
@@ -847,11 +839,9 @@ public class FortranFormat {
     /**
      * Removes the parenthesis from the specification string.
      * 
-     * @param input
-     *            the input
+     * @param input the input
      * @return the string
-     * @throws ParseException
-     *             the parse exception
+     * @throws ParseException the parse exception
      */
     protected final String removeParenthesis(final String input) throws ParseException {
       final StringBuilder sb = new StringBuilder();
@@ -876,13 +866,10 @@ public class FortranFormat {
     /**
      * Find the closing parenthesis to a given open parenthesis in a string.
      * 
-     * @param withParen
-     *            is the String containing the open parenthesis in question.
-     * @param open
-     *            is the index of the open parenthesis
+     * @param withParen is the String containing the open parenthesis in question.
+     * @param open is the index of the open parenthesis
      * @return the index of the corresponding close parenthesis
-     * @throws ParseException
-     *             the parse exception
+     * @throws ParseException the parse exception
      */
     private final int findClosingParenthesis(final String withParen, final int open)
         throws ParseException {
@@ -911,8 +898,7 @@ public class FortranFormat {
      * Parses the format specification string after pre-processing.
      * 
      * @return the ArrayList of Units that correspond to the format
-     * @throws ParseException
-     *             the parse exception
+     * @throws ParseException the parse exception
      */
     public final ArrayList<Unit> getUnits() throws ParseException {
       final StringTokenizer st = new StringTokenizer(getCompletedInterpretation(), ",");
@@ -1010,10 +996,8 @@ public class FortranFormat {
     /**
      * Instantiates a new unit.
      * 
-     * @param type
-     *            the type
-     * @param length
-     *            the length 'w'
+     * @param type the type
+     * @param length the length 'w'
      */
     public Unit(final EditDescriptor type, final int length) {
       this.type = type;
@@ -1071,20 +1055,18 @@ public class FortranFormat {
     private char positioningChar = ' ';
 
     /**
-     * Use this to set whether or not to append a return line to the end of
-     * the generated string during write.
+     * Use this to set whether or not to append a return line to the end of the generated string
+     * during write.
      */
     private boolean addReturn = false;
 
     /**
-     * Use this to choose whether to return decimals as Float or Double
-     * objects.
+     * Use this to choose whether to return decimals as Float or Double objects.
      */
     private boolean returnFloats = false;
 
     /**
-     * Use this to choose whether to return zero if a blank is read for
-     * numbers.
+     * Use this to choose whether to return zero if a blank is read for numbers.
      */
     private boolean returnZeroForBlanks = false;
 
@@ -1094,8 +1076,7 @@ public class FortranFormat {
     private boolean leftAlignCharacters = true;
 
     /**
-     * Gets the positioning char. This is the character to use when skipping
-     * spaces during write.
+     * Gets the positioning char. This is the character to use when skipping spaces during write.
      * 
      * @return the positioning char
      */
@@ -1104,22 +1085,18 @@ public class FortranFormat {
     }
 
     /**
-     * Sets the positioning char. This is the character to use when skipping
-     * spaces during write.
+     * Sets the positioning char. This is the character to use when skipping spaces during write.
      * 
-     * @param positioningChar
-     *            the new positioning character
+     * @param positioningChar the new positioning character
      */
     public void setPositioningChar(final char positioningChar) {
       this.positioningChar = positioningChar;
     }
 
     /**
-     * Specifies whether or not to add a new line at the end of a line
-     * during write.
+     * Specifies whether or not to add a new line at the end of a line during write.
      * 
-     * @param addReturn
-     *            the new return line behavior
+     * @param addReturn the new return line behavior
      */
     public void setAddReturn(final boolean addReturn) {
       this.addReturn = addReturn;
@@ -1128,8 +1105,7 @@ public class FortranFormat {
     /**
      * Checks if returns are added at the end of lines during write.
      * 
-     * @return true, if is if new lines are added at the end of lines during
-     *         write
+     * @return true, if is if new lines are added at the end of lines during write
      */
     public boolean isAddReturn() {
       return addReturn;
@@ -1147,8 +1123,7 @@ public class FortranFormat {
     /**
      * Set whether floats are returned instead of doubles.
      * 
-     * @param returnFloats
-     *            the return floats
+     * @param returnFloats the return floats
      */
     public void setReturnFloats(final boolean returnFloats) {
       this.returnFloats = returnFloats;
@@ -1166,8 +1141,7 @@ public class FortranFormat {
     /**
      * Set whether zeros are returned for blanks.
      * 
-     * @param returnZeroForBlanks
-     *            the return zero for blanks
+     * @param returnZeroForBlanks the return zero for blanks
      */
     public void setReturnZeroForBlanks(final boolean returnZeroForBlanks) {
       this.returnZeroForBlanks = returnZeroForBlanks;
@@ -1185,8 +1159,7 @@ public class FortranFormat {
     /**
      * Set whether characters are left aligned.
      * 
-     * @param leftAlignCharacters
-     *            the left align characters
+     * @param leftAlignCharacters the left align characters
      */
     public void setLeftAlignCharacters(final boolean leftAlignCharacters) {
       this.leftAlignCharacters = leftAlignCharacters;
@@ -1237,10 +1210,8 @@ public class FortranFormat {
   /**
    * Instantiates a new FortranFormat object.
    * 
-   * @param specificationString
-   *            is the format specification string
-   * @throws ParseException
-   *             the parse exception
+   * @param specificationString is the format specification string
+   * @throws ParseException the parse exception
    */
   public FortranFormat(final String specificationString) throws ParseException {
     units = new SpecificationStringInterpreter(specificationString).getUnits();
@@ -1304,11 +1275,9 @@ public class FortranFormat {
   /**
    * Formats the given object.
    * 
-   * @param object
-   *            is the Java Object to be formatted
+   * @param object is the Java Object to be formatted
    * @return the formatted string
-   * @throws IOException
-   *             Signals that an I/O exception has occurred.
+   * @throws IOException Signals that an I/O exception has occurred.
    */
   public String format(final Object object) throws IOException {
     final ArrayList<Object> input = new ArrayList<Object>(1);
@@ -1319,11 +1288,9 @@ public class FortranFormat {
   /**
    * Formats the given objects.
    * 
-   * @param objects
-   *            are the Java Objects to be formatted
+   * @param objects are the Java Objects to be formatted
    * @return the formatted string
-   * @throws IOException
-   *             Signals that an I/O exception has occurred.
+   * @throws IOException Signals that an I/O exception has occurred.
    */
   public String format(final List<Object> objects) throws IOException {
     int minus = 0;
