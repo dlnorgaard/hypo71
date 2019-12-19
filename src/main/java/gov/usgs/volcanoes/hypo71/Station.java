@@ -29,7 +29,8 @@ public class Station implements Serializable {
    */
   double LAT2;
   /**
-   * Punch N or leave this column blank for stations in northern hemisphere. Punch S for stations in sourthern hemisphere.
+   * Punch N or leave this column blank for stations in northern hemisphere. Punch S for stations in
+   * sourthern hemisphere.
    */
   char INS;
   /**
@@ -58,7 +59,8 @@ public class Station implements Serializable {
    */
   double XMGC;
   /**
-   * System number is assigned for each station so that the frequency response curve of the seismometer and preamp is specified for the amplitude magnitude calculation (XMAG).
+   * System number is assigned for each station so that the frequency response curve of the
+   * seismometer and preamp is specified for the amplitude magnitude calculation (XMAG).
    */
   int KLAS;
   /**
@@ -124,14 +126,14 @@ public class Station implements Serializable {
    */
   double TPCAL;
   /**
-   * If the Station Delay Model is used, then DLY means the station delay in
-   * sec from the input list. If the Variable First-Layer Model is used, then
-   * H1 means the thickness of the first layer in km at this station.
+   * If the Station Delay Model is used, then DLY means the station delay in sec from the input
+   * list. If the Variable First-Layer Model is used, then H1 means the thickness of the first layer
+   * in km at this station.
    */
   double DLYH1;
   /**
-   * Residual of P-arrival in seconds.  Or, if S-P interval data is used, then
-   * S-P residual in seconds.
+   * Residual of P-arrival in seconds. Or, if S-P interval data is used, then S-P residual in
+   * seconds.
    */
   double PRES;
   /**
@@ -183,13 +185,11 @@ public class Station implements Serializable {
    */
   double TSOBS;
   /**
-   * Residual of S-arrival in sec. Same as PRES if S-P interval
-   * data are used.
+   * Residual of S-arrival in sec. Same as PRES if S-P interval data are used.
    */
   double SRES;
   /**
-   * Weight used in hypocenter solution for S-arrival.
-   * N/A if S-P itnerval data is used.
+   * Weight used in hypocenter solution for S-arrival. N/A if S-P itnerval data is used.
    */
   double SWT;
   /**
