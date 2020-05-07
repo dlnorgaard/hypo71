@@ -3,8 +3,8 @@
     "name": "usgs/vsc/hypo71",
     "organization": "U.S. Geological Survey",
     "description": "A Java version of the Hypo71 earthquake locating algorithm.",
-    "version": "0.0.1",
-    "status": "snapshot",
+    "version": "1.0.0",
+    "status": "Release Candidate",
 
     "permissions": {
       "usageType": "openSource",
@@ -31,7 +31,7 @@
     ],
 
     "languages": [
-      "English"
+      "Java"
     ],
 
     "contact": {
@@ -40,7 +40,7 @@
     },
 
     "date": {
-      "metadataLastUpdated": "2019-11-29"
+      "metadataLastUpdated": "2020-05-07"
     }
   }
 ]
